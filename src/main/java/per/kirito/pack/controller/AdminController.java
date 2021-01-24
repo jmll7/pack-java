@@ -71,11 +71,18 @@ public class AdminController {
 		return accountService.resetPwd(card, oldPwd, newPwd, checkCode, token);
 	}
 
-
+	/**
+	 * @Description: 更新 Admin 信息
+	 * @Param: [name, phone, token]
+	 * @Return: java.util.Map<java.lang.String,java.lang.String>
+	 **/
 	@CrossOrigin
-	@RequestMapping(value = "/test")
-	public String test() {
-		return "test";
+	@RequestMapping(value = "/updateInfo")
+	public Map<String, String> updateInfo(@RequestParam(value = "name") String name,
+	                                      @RequestParam(value = "phone") String phone,
+	                                      @RequestParam(value = "mail") String mail,
+	                                      @RequestParam(value = "token") String token) {
+		return accountService.updateInfo(name, phone, mail, token);
 	}
 
 }
